@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mylsh"
+dynamic = ["version"]
+description = "A lightweight universal document loader for RAG applications"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Parasuraman E", email = "g63909731@gmail.com" }
+]
+keywords = [
+    "rag", "document-loader", "pdf-loader", "document-processing",
+    "ai", "llm", "ocr", "text-extraction"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+pdf = ["pypdf>=4.0"]
+word = ["python-docx>=1.0"]
+excel = ["openpyxl>=3.1", "pandas>=1.5", "xlrd>=2.0"]
+powerpoint = ["python-pptx>=0.6"]
+epub = ["ebooklib>=0.18"]
+rtf = ["striprtf>=0.0.26"]
+yaml = ["pyyaml>=6.0"]
+image = ["Pillow>=10.0", "pytesseract>=0.3.10"]
+audio = ["faster-whisper>=1.0"]
+video = ["opencv-python-headless>=4.8", "Pillow>=10.0", "pytesseract>=0.3.10"]
+all = [
+    "pypdf>=4.0", "python-docx>=1.0", "openpyxl>=3.1", "pandas>=1.5",
+    "xlrd>=2.0", "python-pptx>=0.6", "ebooklib>=0.18", "striprtf>=0.0.26",
+    "pyyaml>=6.0", "Pillow>=10.0", "pytesseract>=0.3.10",
+]
+dev = ["pytest>=7", "build", "twine"]
+
+[project.urls]
+Source = "https://github.com/Parasuraman24/mylsh"
+
+[tool.setuptools.dynamic]
+version = { attr = "mylsh.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mylsh = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
